@@ -1,0 +1,93 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+
+@font-face {
+    font-family: myFont;
+    src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+
+.container{
+    display:flex
+}
+.viewOrderContainer{
+    margin-top: 50px;
+    line-height: 20px;
+    font-family: myFont;
+    h1{
+        padding-bottom: 30px;
+    }
+
+    .leftPart{
+        display: flex;
+        
+        .col-6{
+            div{
+                padding: 30px 0px;
+                top: 0px;
+                .contnet{
+                    color: $darkGray
+                }
+            }
+        }
+    }
+    h1{
+        @include heading2;
+        // padding: 30px 0px;
+        width: 100%;
+    }
+    .rightPart{
+        line-height: 20px;
+        @include heading5;
+        .contain{
+            padding: 20px;
+            background-color: $lightGray;
+        }
+        .prod{
+            display: flex;
+            justify-content: space-between;
+            border-bottom:1px solid $darkGray ;
+        }
+        .prodItem{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom:1px solid $darkGray ;
+            div{
+                padding: 10px 0;
+                color: $darkGray;
+            display: flex;
+            justify-content: space-between;
+            }
+        }
+        .sub,.ship{
+            display: flex;
+            justify-content: space-between;
+            border-bottom:1px solid $darkGray ;
+            padding: 10px 0;
+
+        }
+        .total{
+            @include body-large;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700px;
+            padding: 10px 0;
+
+        }
+    }
+}
+@media screen and (max-width: 768px)and (min-width: 310px){
+    .container{
+        padding-right: 0;
+    }
+
+    .leftPart{
+        flex-direction: column;
+    }
+    .contnet{
+        @include body-large;
+        color: $darkGray;
+        margin-bottom: 10px;
+
+    }
+}

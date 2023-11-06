@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="login-wrapper">
+        <div class="login-title">My account</div>
+        <div class="login-tabs">
+            <button class="btn tab" [class.tabFocus]="loginTab === 1" (click)="loginTab = 1">Sign in</button>
+            <button class="btn tab" [class.tabFocus]="loginTab === 2" (click)="loginTab = 2">Register</button>
+        </div>
+        <div class="login-form">   
+            <ng-container class="sign-in" *ngIf="loginTab === 1" [formGroup]="signInForm">
+                <label class="input-title" for="username">Username</label>
+                <input type="text" id="username" class="log-in" name="username" formControlName="username">
+                <span class="error" *ngIf="signInForm.get('username')?.invalid  && login" [ngClass]="'error'">You have entered an invalid username or password</span>
+                <label class="input-title" for="password">Password</label>
+                <input type="password" id="password" class="log-in" name="password" formControlName="password">
+                <span class="error" *ngIf="signInForm.get('password')?.invalid && login" [ngClass]="'error'">You have entered an invalid username or password</span>
+                <div>
+                  <input type="checkbox" id="remember" name="remember" (click)="!remember">
+                  <label  for="remember">Remember me</label>
+                </div>
+                <button class="btn dark-btn" (click)="signIn()">SIGN IN</button>
+                <div class="reminder" routerLink="/reset">Have you forgotten your password?</div>
+            </ng-container>
+            <ng-container class="register" *ngIf="loginTab === 2" [formGroup]="registerForm">
+                <label class="input-title" for="firstName">First name*</label>
+                <input type="text" id="firstName" name="firstName" formControlName="firstName">
+                <span class="error" *ngIf="registerForm.get('firstName')?.invalid  && register" [ngClass]="'error'">First name must be filled out!</span>
+                <label class="input-title" for="lastName">Last name*</label>
+                <input type="text" id="lastName" name="lastName" formControlName="lastName">
+                <span class="error" *ngIf="registerForm.get('lastName')?.invalid  && register" [ngClass]="'error'">Last name must be filled out!</span>
+                <label class="input-title" for="displayName">Display name*</label>
+                <input type="text" id="displayName" name="displayName" formControlName="displayName">
+                <span class="error" *ngIf="registerForm.get('displayName')?.invalid  && register" [ngClass]="'error'">Display name must be filled out!</span>
+                <div class="body-small">This will be how your name will be displayed in the account section and in reviews.</div>
+                <label class="input-title" for="email">Email address*</label>
+                <input type="email" id="email" name="email" formControlName="email">
+                <span class="error" *ngIf="registerForm.get('email')?.invalid && register" [ngClass]="'error'">Email is not valid</span>
+                <label class="input-title" for="password">Password</label>
+                <input type="password" id="password"name="password" formControlName="password">
+                <span class="error" *ngIf="registerForm.get('password')?.invalid && register" [ngClass]="'error'">Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters</span>
+                <label class="input-title" for="confirmPass">Confirm password</label>
+                <input type="password" id="confirmPass" name="confirmPass" formControlName="confirmPass">
+                <span class="error" *ngIf="registerForm.get('confirmPass')?.value !== registerForm.get('password')?.value && register" [ngClass]="'error'">Your password and confirmation password do not match.</span>
+                <div>
+                  <input type="checkbox" id="agree" name="agree" formControlName="agree">
+                  <label for="agree">Agree</label>
+                </div>
+                <button class="btn dark-btn" (click)="createAccount()">REGISTER</button>
+                <span class="reminder" (click)="loginTab = 1">Already have an account?</span>
+            </ng-container>
+        </div>
+        
+    </div>
+</div>

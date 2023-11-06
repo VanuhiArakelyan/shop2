@@ -1,0 +1,286 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+
+@font-face {
+    font-family: boldFont;
+    src: url(../../../assets/font-family/DMSans-Bold.ttf)
+}
+@font-face {
+    font-family: mediumFont;
+    src: url(../../../assets/font-family/DMSans-Medium.ttf)
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+.container{
+  //width: 1248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+// // .slide {
+//   width: 90%;
+//   height: 20%;
+//   border-radius: 16px;
+//   transition: linear 5s;
+//   position: relative;
+// }
+//   .img {
+//     width: 100%;
+//     z-index: 0;
+//     //position: relative;
+//     object-fit: contain;
+//    // transition: width 5s;
+//     border-radius: 30px;
+//   }
+  
+// }
+.item{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  position:absolute;
+  top: 55%;
+  left: 5%;
+.slider-btn {
+    border-radius: 6px;
+    border: 2px solid $white;
+    background: none;
+    color: $white;
+    width: 200px;
+    height: 50px;
+    @include heading4;
+   
+
+    & .slider-btn:hover {
+        background-color: $white;
+        color: $black;
+    }
+}
+
+ #name {
+    @include heading1;
+    color: $white;
+}
+
+#price {
+    @include heading2;
+    color: $white;
+}
+}
+//shop part
+.product{
+  width: 100%;
+ // height: 60%;
+}
+.view-more{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+.header{
+  @include heading1;
+  color: $black;
+}
+.view-all{
+  @include heading4;
+  color:$accent;
+  padding-left: 20px
+}
+
+
+
+//product
+.products-items{
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content:space-evenly;
+  gap: 10px;
+
+
+.card{
+  width: 100%; 
+  height: 100%;
+  margin-bottom: 10px;
+  border:none;
+  outline: none;
+  padding:0;
+}
+
+.products-item-info{
+  @include heading4;
+  color:$accent;
+}
+.products-item-image{
+  position: relative;
+}
+
+.products-item-image:hover .img{
+  opacity: 0.5;
+}
+
+.products-item-image:hover .addItem{
+opacity: 1;
+}
+
+.img{
+  display: block;
+  opacity: 1;
+  object-fit: contain;
+  cursor:pointer;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+
+.addItem {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.add{
+  margin-left: 10px;
+  color: $black;
+}
+
+.discount{
+  @include body-small;
+  position: absolute;
+  top:10px;
+  left:10px;
+  width: 46px;
+  height: 24px;
+  text-align: center;
+  border-radius: 21%;
+  color: $white;
+  background-color: $accent;
+  z-index: 1;
+}
+.products-item-title{
+  @include heading3;
+  color: $black;
+  font-family: basic
+}
+.products-item-info{
+  margin-right: 10px
+}
+.products-item-price{
+  margin-right: 10px
+}
+.price{
+  color:$errors;
+  text-decoration: line-through
+}
+
+.aditionalText{
+  @include body-small;
+  position: absolute;
+  top:10px;
+  left:10px;
+  width: 63px;
+  height: 24px;
+  color: $white;
+  background-color: $accent;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+}
+.row{
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) and (min-width: 310px){
+.header,.view-all {
+  @include heading3;
+  }
+
+  .products-items{
+    // justify-content: flex-;
+      gap:40px;
+    
+   .card{
+     //min-width:min-content;
+     min-height:160px;
+     margin-right: 10px;
+     margin-bottom: 10px;
+    }
+    .img{
+     min-width: 110px;
+     min-height: 110px;
+     object-fit: contain;
+   }
+   .card-body{
+    min-width: 110px;
+   }
+   .products-item-title{
+    @include heading5
+  } 
+  .products-item-info{
+    display: flex;
+    flex-direction: column
+  }
+   .products-item-price{
+    @include body-large;
+    margin-right: 0;
+    padding-right: 10px;
+   }
+   .newPrice{
+    @include body-large;
+   }
+  .discount, .aditionalText{
+    width: max-content;
+    height: max-content;
+  }
+  }
+
+.slide{
+  img{
+  width: 288px;
+  height: 300px;
+  object-fit:cover;
+  }
+.item{
+  width:25%;
+  height: 25%;
+}
+.slider-btn {
+    border-radius: 6px;
+    border: 2px solid $white;
+    background: none;
+    color: $white;
+    width: 150px;
+    height: 30px;
+    @include body-small;
+}
+
+ #name {
+    @include body-large;
+}
+
+#price {
+    @include body-medium;
+}
+}
+.col-12{
+  padding-right: 0;
+  padding-left: 0;
+}
+}
+

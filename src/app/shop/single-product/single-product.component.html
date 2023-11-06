@@ -1,0 +1,182 @@
+<div class="container">
+  <div class="alert" role="alert" *ngIf="add === true">
+  <div >
+    <span class="pi pi-check-circle alert-text"></span>
+    <span>The item added to your Shopping bag.</span>
+  </div>
+    <span class="viewCart" routerLink="/card">VIEW CART</span>
+  </div>
+    <div class="item row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8  image-wrapper">
+        <div class="images">
+            <span class="item-small-img" *ngFor="let img of selectedItem.imageUrl; let i = index" [class.active]>
+              <img class="img item-small-img" src="{{img}}" alt="ring" appImageSrc>
+            </span>
+        </div>
+        <div class="item-image">
+          <span class="discount" *ngIf="selectedItem.discount > 0">-%{{selectedItem.discount}}</span>
+          <span class="aditionalText" *ngIf="selectedItem.quantity === 0">{{selectedItem.aditionalText}}</span>
+          <img class="mainImg" id="mainImg" src="{{image}}" alt="ring" id="preview"/>
+        </div>
+        </div>
+        <div class="option col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+          <div class="item-info name">
+            <div class="heading2">{{selectedItem.name}}</div>
+            <div class="products-item-info">
+              <span class="products-item-price"  [ngClass]="{'price':selectedItem.discount !== 0 && selectedItem.quantity !== 0}"> {{selectedItem.price | currency : '$'}}</span>
+              <span class="newPrice" *ngIf="selectedItem.discount && selectedItem.quantity !== 0">{{selectedItem.newPrice | currency : '$'}}</span>
+            </div>
+          </div>
+          <div class="info-desk"> 
+          <div class="item-info" *ngIf="viewMore">
+            <span>
+              <ul class="list-inline rating-list" *ngFor="let star of stars;let i = index" style="display:inline-block" >
+                <li >
+                 <i class="pi" [class]="roundStars() >= star ? 'pi-star-fill': 'pi-star'" ></i>
+                </li>
+              </ul>
+
+            </span>
+           <span>{{selectedItem.Reviews.length}} customer review</span>
+          </div>
+          <div class="text">{{selectedItem.Reviews[0].text}}</div>
+          <div class="add-item" *ngIf="selectedItem.quantity !==0">
+            <span class="quantity">
+              <button class="minus btn" (click)="decriment(selectedItem)">-</button>
+              <span class="number">{{quantity}}</span>
+              <button class="plus btn"(click)="increment(selectedItem)">+</button>
+            </span>
+            <button class="light-button  btn btn-light" (click)="addToCart(selectedItem)">ADD TO CART</button>
+          </div>
+          <span class="sold" *ngIf="selectedItem.quantity === 0"> Out of stock</span>
+          </div>
+            <div class="contact-us" *ngIf="viewMore">
+              <span [class]="!selectedItem.Liked? 'pi pi-heart' : 'pi pi-heart-fill'"></span>
+              <span class="pi pi-envelope contact" routerLink="/contact-us"></span>
+              <span class="pi pi-facebook contact" routerLink="/contact-us"></span>
+              <span class="pi pi-instagram contact" routerLink="/contact-us"></span>
+              <span class="pi pi-twitter contact" routerLink="/contact-us"></span>
+            </div>
+            <div class="heading5" *ngIf="viewMore">
+               <div class="category">SKU:<span class="text">12</span></div>
+               <div class="category">Categories: <span class="text">{{selectedItem.Categories}}</span></div>
+           </div>
+           <div>
+            <button class="btn btn-light view-more" (click)="viewMore = !viewMore">View more</button>
+            <i class="pi pi-chevron-right"></i>
+          </div>
+        </div>
+    </div>
+    <div class="descriptions row" >
+        <div class="tabs col-12 nav">
+           <span class="tab">
+           <button class="btn tab-title" [class.tab-title-focus]="tab === 1" (click)="tab = 1">Description</button>
+           <i class="pi pi-chevron-down" (click)="tab = 1" ></i>
+          </span>
+           <span class="tab">
+          <button class="btn tab-title" [class.tab-title-focus]="tab === 2" (click)="tab = 2">Aditional Information</button>
+          <i class="pi pi-chevron-down"(click)="tab = 2"></i>
+        </span>
+        <span class="tab">  
+        <button class="btn tab-title" [class.tab-title-focus]="tab === 3" (click)="tab = 3">Reviews({{selectedItem.Reviews.length}})</button>
+       <i class="pi pi-chevron-down" (click)="tab = 3"></i>
+      </span>
+      </div>
+        <div class="info col-12">
+        <ng-container class="description" *ngIf="tab === 1">
+          <span class="heading5">{{selectedItem.Description}}</span>
+        </ng-container>
+        <ng-container class="aditInfo text col-12" *ngIf="tab === 2">
+          <p>Weight:<span class="text">{{selectedItem.AditionalInformation.weight}}</span></p>
+          <p >Dimentions:<span class="text">{{selectedItem.AditionalInformation.dimentions}}</span></p>
+          <p>Colours:<span class="text">{{selectedItem.AditionalInformation.colours}}</span></p>
+          <p>Material:<span class="text">{{selectedItem.AditionalInformation.material}}</span></p>
+        </ng-container>
+        <ng-container *ngIf="tab === 3">
+          <div class="row review-desk">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6  user-review">
+            <span class="heading3">{{selectedItem.Reviews.length}} Reviews for {{selectedItem.name}}</span>
+            <div class="user" *ngFor="let review of selectedItem.Reviews">
+            <span class="heading3">{{review.name}}</span>
+            <span class="body-medium">{{review.date}}</span>
+            <!-- static stars-->
+            <div class="stars">
+              <ul class="list-inline rating-list" *ngFor="let star of stars;let i = index" style="display:inline-block" >
+                <li >
+                 <i class="pi" [class]="review.stars >= star ? 'pi-star-fill': 'pi-star'" ></i>
+                </li>
+              </ul>
+            </div>
+            <p class="heading5">{{review.text}}</p>
+          </div>
+          </div>
+          <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-6" [formGroup]="newReview">
+            <span class="heading3">Add a Review</span>
+            <p class="body-medium">Your email address will not be published. Required fields are marked *</p>
+            <div class="review-form">
+              <label for="review" class="body-medium">Your Review*</label>
+              <input type="text" class="text" id="review" formControlName="text" name="review">
+              <span class="error" *ngIf="newReview.get('text')?.invalid && reviews" [ngClass]="'error'">Review must be filled out!</span>
+              <label for="name" class="body-medium">Enter your name*</label>
+              <input type="text" class="text" id="name" formControlName="name" name="firstname">
+              <span class="error" *ngIf="newReview.get('name')?.invalid && reviews" [ngClass]="'error'">Email is not valid</span>
+              <label for="email" class="body-medium">Enter your Email*</label>
+              <input type="email" class="text" id="email" formControlName="email" name="email">
+              <span class="error" *ngIf="newReview.get('email')?.invalid && reviews" [ngClass]="'error'">Email is not valid</span>
+              <span>
+              <input type="checkbox" id="check" formControlName="agree">
+              <label for="check" class="body-small">Save my name, email, and website in this browser for the next time I comment</label>
+              </span>
+              <div class="reviewStars">
+                <ul class="list-inline rating-list" *ngFor="let star of stars;let i = index" style="display:inline-block" >
+                  <li (click)="countStar(star)" id="{{'starId'+ i}}"
+                  (mouseover)="addClass(star)" (mousedout)="removeClass(star)" >
+                   <i [class]="star <= selectedValue? 'pi pi-star-fill': 'pi pi-star'" ></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button type="submit" class="btn dark-button" (click)="addReview(selectedItem)">Submit</button>
+          </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row similar"> 
+      <span class="heading2 col-12">Similar Items</span>
+    </div>
+      <div class="row  similar-items ">
+        <div class="similar-item col-xs-3 col-sm-4 col-lg-4 " *ngFor="let product of similarItems">
+            <div class="card">
+              <div class="products-item-image">
+              <span class="discount" *ngIf="product.discount > 0">-%{{product.discount}}</span>
+              <span class="aditionalText" *ngIf="product.quantity === 0">{{product.aditionalText}}</span>
+              <span class="addItem">
+                <i class="pi pi-shopping-cart add" (click)="addToBacket(product)"></i>
+                <i class="pi pi-eye add" (click)="goTo(product)"></i>
+                <i [class]="!product.Liked ? 'pi pi-heart add': 'pi pi-heart-fill add' " (click)="addLike(product)"></i>
+              </span>
+              <img class="card-img-top img" src="{{product.imageUrl[0]}}" alt="earrings">
+              </div>
+              <div class="card-body">
+                <div class="card-title products-item-title">{{product.name}}</div>
+                <div class="products-item-info">
+                  <span class="products-item-price"  [ngClass]="{'price':product.discount !== 0 && product.quantity !== 0}"> ${{product.price}}</span>
+                  <span class="newPrice" *ngIf="product.discount && product.quantity !== 0">{{product.newPrice | currency : '$'}}</span> 
+              </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    
+
+<!-- 
+pi-chevron-right
+pi-chevron-down -->
+
+
+
+
+
+

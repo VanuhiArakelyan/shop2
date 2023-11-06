@@ -1,0 +1,306 @@
+@import '../../../assets/styles/colors.scss';
+@import '../../../assets/styles/fonts.scss';
+
+@font-face  {
+    font-family:blogFont ;
+    src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start
+}
+.blog{
+    @include heading1;
+    color: $black;
+    width: 66px;
+    height: 43px;
+    top: 30px;
+    position: relative;
+    font-family:'blogFont';
+}
+.page{
+    display: flex;
+    padding-top: 50px;
+}
+.left-part{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 80px;
+    // width: 20%;
+    .search{
+        top: 50px;
+        width: 261px;
+        height: 35px;
+        position: relative;
+    }
+    .search .searchIcon{
+        position: absolute;
+        left: 70%;
+        height: 15px;
+        width: 15px;
+    }
+    .search .searchInput{
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+    }
+    .items-page{
+        position: relative;
+        top: 70px;
+    }
+    .categories{
+        @include heading4;
+        font-family:'blogFont';
+    
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        gap: 10px;
+        font-size: 16px;
+        font-family:'blogFont';
+        cursor: pointer;
+    }
+    .active{
+        transition: ease-in-out .3s;
+        font-size: 20px;
+        color: $black;
+    }
+}
+
+  
+
+.responsive-grid{
+        width: 350px;
+        margin-right: 20px;
+        border: none;
+        outline: none;
+        img{
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .category{
+            @include body-medium;
+            color: $darkGray;
+        }
+        .card-title{
+            @include heading3;
+            color: $black;
+            font-weight: 400px;
+            padding-top: 10px;
+            font-family: blogFont
+        }
+        .card-text{
+            @include heading5;
+            color: $darkGray;
+            font-weight: 400px;
+            padding-top: 10px
+
+        }
+        .readMore{
+            @include body-large;
+            color: $accent;
+            font-weight: 700px;
+            padding-top: 20px;
+            cursor: pointer;
+
+        }
+        .card-body{
+            padding: 20px 0;
+        }
+    }
+   
+
+.pagination{
+    margin: 50px 0 150px 200px;
+    justify-content: center;
+    button{
+        height: 40px;
+        width: 40px;
+        margin-left: 5px;
+        background-color: white;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+    .active{
+        background-color: black;
+        color: white;
+    }
+    button:hover{
+        background-color: grey;
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 310px){
+    .left-part{
+        order: 1;
+    }
+    .responsive-grid{
+        order: 2;
+        margin-right: 0;
+        width: 100%;
+    }
+   .page{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+   }
+   .col-sm-12{
+    max-width:100%;
+   }
+  .pagination{
+    margin:0;
+   }
+}
+
+
+
+
+
+// .blog{
+//     @include heading1;
+//     color: $black;
+//     width: 66px;
+//     height: 43px;
+//     top: 30px;
+//     position: relative;
+//     font-family:'blogFont';
+// }
+// .page{
+//     display: flex;
+// }
+// .left-part{
+//     display: flex;
+//     flex-direction: column;
+//     padding-bottom: 50px;
+//     // width: 20%;
+//     .search{
+//         top: 50px;
+//         width: 261px;
+//         height: 35px;
+//         position: relative;
+//     }
+//     .search .searchIcon{
+//         position: absolute;
+//         left: 70%;
+//         height: 15px;
+//         width: 15px;
+//     }
+//     .search .searchInput{
+//         border: none;
+//         border-bottom: 1px solid black;
+//         outline: none;
+//     }
+//     .items-page{
+//         position: relative;
+//         top: 70px;
+//     }
+//     .categories{
+//         @include heading4;
+//         font-family:'blogFont';
+    
+//     }
+//     .list{
+//         display: flex;
+//         flex-direction: column;
+//         margin-top: 10px;
+//         gap: 10px;
+//         font-size: 16px;
+//         // font-family:'blogFont';
+//     }
+// }
+  
+    
+// .responsive-grid{
+//         border: none;
+//         outline: none;
+//         width: 20rem;
+//         img{
+//             object-fit: cover;
+//             cursor: pointer;
+//         }
+//         .category{
+//             @include body-medium;
+//             color: $darkGray;
+//         }
+//         .card-title{
+//             @include heading3;
+//             color: $black;
+//             font-weight: 400px;
+//             padding-top: 10px;
+//             font-family: blogFont
+//         }
+//         .card-text{
+//             @include heading5;
+//             color: $darkGray;
+//             font-weight: 400px;
+//             padding-top: 10px
+
+//         }
+//         .readMore{
+//             @include body-large;
+//             color: $accent;
+//             font-weight: 700px;
+//             padding-top: 20px;
+//             cursor: pointer;
+
+//         }
+//         .card-body{
+//             padding: 20px 0;
+//         }
+//     }
+    // .item{
+    //     max-width: 20%;
+    //     p{
+    //         font-size: 16px;
+    //         color: grey;
+    //     }
+    //     .name{
+    //         font-size: 22px;
+    //         color: black;
+    //     }
+    //     .more{
+    //         color: rgb(150, 113, 85);
+    //         font-weight: 500;
+    //         text-decoration: none;
+    //         cursor: pointer;
+
+    //     }
+    
+
+// .pagination{
+//     // margin-top: 50px;
+//     // margin-bottom: 150px;
+//     margin: 50px 0 150px 200px;
+//     // text-align: center;
+//     justify-content: center;
+//     button{
+//         height: 40px;
+//         width: 40px;
+//         margin-left: 5px;
+//         background-color: white;
+//         border: 1px solid grey;
+//         border-radius: 5px;
+//     }
+//     .active{
+//         background-color: black;
+//         color: white;
+//     }
+//     button:hover{
+//         background-color: grey;
+//     }
+// }
+
+// @media only screen and (max-width: 576px){
+//     .left-part{
+//         order: 1;
+//     }
+//     .responsive-grid{
+//         order: 2;
+//     }
+// }

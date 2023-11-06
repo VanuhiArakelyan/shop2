@@ -1,0 +1,216 @@
+<div class="container">
+<h1>My Account</h1>
+<div class="accountNavbar">
+    <div class="navItem">
+    <button (click)="onTabClick('dashboard')" [class.active]="activeTab === 'dashboard'"> Dashboard</button>
+    <button (click)="onTabClick('orders')" [class.active]="activeTab === 'orders'">Orders</button>
+    <button (click)="onTabClick('downloads')" [class.active]="activeTab === 'downloads'">Downloads</button>
+    <button (click)="onTabClick('liked')" [class.active]="activeTab ==='liked'">Liked</button>
+    <button (click)="onTabClick('addresses')" [class.active]="activeTab === 'addresses'">Addresses</button>
+    <button (click)="onTabClick('account')" [class.active]="activeTab === 'account'" >Account details</button>
+    <button (click)="onTabClick('logout')" [class.active]="activeTab === 'logout'">Logout</button>
+    </div>
+<span class="icon"><i id="right" class="fa-solid fa-angle-right"></i></span>
+</div>
+<div class="containText">
+    <div *ngIf="activeTab === 'dashboard' && user">
+        <p>Hello {{username}} (not {{username}}<span (click)="onTabClick('Logout')" class="links"> Log out</span>) </p>
+        <p>From your account dashboard you can view your <span (click)="onTabClick('orders')" class="links">recent
+                orders</span> , manage your <span (click)="onTabClick('addresses')" class="links">shipping and billing
+                addresses</span>, and edit your <span (click)="onTabClick('account')" class="links">password and account
+                details.</span></p>
+    </div>
+
+    <div *ngIf="activeTab === 'orders' && user">
+        <div *ngIf="orders.length ===0">
+            <p>No order has been made yet.</p>
+        </div>
+        <div *ngIf="orders.length >= 1">
+            <div class="orderInfo">
+                <span>ORDER NUMBER</span>
+                <span>DATE</span>
+                <span>STATUS</span>
+                <span>TOTAL</span>
+                <span>ACTIONS</span>
+            </div>
+        </div>
+        <hr>
+        <div *ngFor="let order of orders" class="orders">
+            <span>{{order.orderNumber}}</span>
+            <span>{{order.date}}</span>
+            <span>{{order.status}}</span>
+            <span>{{order.total}}</span>
+            <span routerLink="/viewOrder">{{order.actions}}</span>
+        </div>
+    </div>
+    <div *ngIf="activeTab === 'downloads' && user">
+        <div *ngIf="downloads.length ===0" class="noDownloads">
+            <span>No downloads available yet..</span>
+            <span class="button" routerLink="shop">Browse Product</span>
+        </div>
+        <div *ngIf="downloads.length >= 1">
+            <div class="orderInfo" *ngFor="let item of downloads" class="orders">
+                <div class="orderInfo">
+                    <span>ORDER NUMBER</span>
+                    <hr>
+                    <span>{{item.orderNumber}}</span>
+                </div>
+                <div class="orderInfo">
+                    <span>DATE</span>
+                    <hr>
+                    <span>{{item.date}}</span>
+                </div>
+                <div class="orderInfo">
+                    <span>STATUS</span>
+                    <hr>
+                    <span>{{item.status}}</span>
+                </div>
+                <div class="orderInfo">
+                    <span>TOTAL</span>
+                    <hr>
+                    <span>{{item.total}}</span>
+                </div>
+                <div class="orderInfo">
+                    <span>ACTIONS</span>
+                    <hr>
+                    <span>{{item.actions}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="liked-items" *ngIf="activeTab ==='liked'">
+        <div class="liked" *ngFor="let item of products">
+            <div class="item-image">
+                <img class="img" src="{{item.imageUrl[0]}}" alt="ring" routerLink="singleProduct/:id" >
+            </div>
+            <div class="item-info">
+                <span class="item-title">{{item.name}}</span>
+                <span class="item-price">${{item.price}}</span> 
+            </div> 
+            <div class="delete-item">
+                <button class="delete" (click)="removeItem(item)"><i class=" pi pi-times"></i></button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="activeTab ==='addresses' && user" class="addresHeader">
+        <div *ngIf="addresses.length ===0">
+            <p class="text">The following addresses will be used on the checkout page by default.</p>
+        </div>
+        <div class="addAddress row">
+            <div class="col-lg-6 col-sm-12 addressPage" >
+                <div [class.active]="add === 'noAdddres'" *ngIf="add === 'noAdddres'">
+                    <p class="address">Billing address</p>
+                    <p class="add" (click)="addTab('addAddress') ">ADD</p>
+                    <p>You have not set up this type of address yet.</p>
+                </div>
+                <div *ngIf="add === 'addAddress' && user">
+                    <form action="address" class="addAddressForm" [formGroup]="addAddressForm">
+                        <input type="text" placeholder="First Name*" formControlName ="firstName" class="oneline">
+                        <input type="text" placeholder="Laste Name*" formControlName="lastName" class="oneline">
+                        <input type="text" placeholder="Company Name" formControlName="companyName">
+                        <div class="country">
+                            <label for="country" class="labelForCountry">Country*</label>
+                            <select id="country" name="country" class="form-control1 selectControl" formControlName="country" aria-placeholder="country">
+                                <option value="Select Country*">Select Country*</option>
+                                <option value="Armenia">Armenia</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Austria">Austria</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                <option value="Bulgaria">Bulgaria</option>
+                                <option value="Cameroon">Cameroon</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Chile">Chile</option>
+                                <option value="China">China</option>
+                                <option value="Cyprus">Cyprus</option>
+                                <option value="Egypt">Egypt</option>
+                                <option value="Estonia">Estonia</option>
+                                <option value="Ethiopia">Ethiopia</option>
+                                <option value="Finland">Finland</option>
+                                <option value="France">France</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Greece">Greece</option>
+                                <option value="Guyana">Guyana</option>
+                                <option value="Hong Kong">Hong Kong</option>
+                                <option value="Hungary">Hungary</option>
+                                <option value="Iceland">Iceland</option>
+                                <option value="India">India</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                <option value="Iraq">Iraq</option>
+                                <option value="Israel">Israel</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Jamaica">Jamaica</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Jersey">Jersey</option>
+                                <option value="Jordan">Jordan</option>
+                                <option value="Kazakhstan">Kazakhstan</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Kiribati">Kiribati</option>
+                                <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                <option value="Korea, Republic of">Korea, Republic of</option>
+                                <option value="Mexico">Mexico</option>
+                                <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                <option value="Moldova, Republic of">Moldova, Republic of</option>
+                                <option value="Monaco">Monaco</option>
+                                <option value="Mongolia">Mongolia</option>
+                                <option value="Oman">Oman</option>
+                                <option value="Poland">Poland</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Qatar">Qatar</option>
+                                <option value="Reunion">Reunion</option>
+                                <option value="Romania">Romania</option>
+                                <option value="Russian Federation">Russian Federation</option>
+                                <option value="Saint Helena">Saint Helena</option>
+                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                <option value="Somalia">Somalia</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sri Lanka">Sri Lanka</option>
+                                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                <option value="Swaziland">Swaziland</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Tunisia">Tunisia</option>
+                                <option value="Ukraine">Ukraine</option>
+                                <option value="United Arab Emirates">United Arab Emirates</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="United States">United States</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Uzbekistan">Uzbekistan</option>
+                               
+                        
+                            </select> 
+                        </div>
+                        <input type="text" placeholder="Street Address*" formControlName ="streetAddress">
+                        <input type="text" placeholder="Postcode/ZIP*" formControlName="postcode">
+                        <input type="text" placeholder="Town/City*" formControlName="town">
+                        <input type="tel" placeholder="Phone*" formControlName="phone">
+                        <input type="email" placeholder="Email*" formControlName="email">
+                        <button type="submit" (click)="submit()">Save ADDRESS</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 addressPage">
+                <p class="address">Shipping address</p>
+                <p class="add" >ADD</p>
+                <p>You have not set up this type of address yet.</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="activeTab === 'account' && user">
+        <app-account-details></app-account-details>
+    </div>
+    <div *ngIf="activeTab === 'logout' && user" id="logout">
+        <div class="logContainer">
+                <div *ngIf="loggedOut=== false">
+                    <p>Are you sure you want to log out?</p>
+                    <button (click)="logOut()">Log Out</button>
+                </div>
+        </div>
+    </div>
+</div> 
+</div>

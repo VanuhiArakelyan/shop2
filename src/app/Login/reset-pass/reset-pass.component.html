@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="reset-wrapper">
+        <div class="reset-title">Have you Forgotten Your Password ?</div>
+        <div class="reset-text">If you've forgotten your password, enter your e-mail address and we'll send you an e-mail </div>
+        <div class="reset-form">   
+           <label class="input-title" for="email">Email</label>
+           <input type="email" id="email" class="log-in" name="email" [formControl]="email">
+           <!-- <span class="error" *ngIf="email.invalid" [ngClass]="'error'">Email is not valid</span> -->
+        </div>
+        <button class="btn dark-btn" (click)="resetPass()">RESET PASSWORD</button>
+    </div>
+</div>

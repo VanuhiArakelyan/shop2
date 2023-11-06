@@ -1,0 +1,27 @@
+<div class="accontContainer" [formGroup]="accountForm">
+    <h1>Account details</h1>
+    <div class="accountForm" >
+
+        <div class="inputs">
+            <input type="text" placeholder="First name*" formControlName="firstName">
+            <span class="error" *ngIf="accountForm.get('firstName')?.invalid && save" [ngClass]="'error'">First name must be filled out!</span>
+            <input type="text" placeholder="Last name*" formControlName="lastName">
+            <span class="error" *ngIf="accountForm.get('lastName')?.invalid && save" [ngClass]="'error'">Last name must be filled out!</span>
+            <input type="text" placeholder="Display name*" formControlName="displayName">
+            <span class="error" *ngIf="accountForm.get('displayName')?.invalid && save" [ngClass]="'error'">Display name must be filled out!</span>
+            <p class="text">This will be how your name will be displayed in the account section and in reviews.</p>
+            <input type="email" placeholder="Email address*" formControlName="email">
+            <span class="error" *ngIf="accountForm.get('email')?.invalid && save" [ngClass]="'error'">Email is not valid</span>
+        </div>
+        <p class="pChange">Password change</p>
+        <div class="inputs">
+            <input type="text" placeholder="Current password (leave blank to leave unchanged)" formControlName="currentPass">
+            <span class="error" *ngIf="accountForm.get('password')?.invalid && save" [ngClass]="'error'">Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters</span>
+            <input type="text" placeholder="New password (leave blank to leave unchanged)" formControlName="newPass">
+            <span class="error" *ngIf="accountForm.get('newPass')?.invalid && save" [ngClass]="'error'">Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters</span>
+            <input type="text" placeholder="Confirm new password" formControlName="confirmPass">
+            <span class="error" *ngIf="accountForm.get('confirmPass')?.value !== accountForm.get('newPass')?.value" [ngClass]="'error'">Your password and confirmation password do not match.</span>
+        </div>
+        <button type="submit" (click)="saveChanges()">SAVE CHANGES </button>
+    </div>
+</div>

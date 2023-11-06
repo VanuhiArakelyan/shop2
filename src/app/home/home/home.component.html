@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+      <div id="carouselExampleIndicators" class="carousel slide col-12" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let slide of products, let i = index" [class.active]="i === 0">
+            <img class="d-block w-100 img-circle" [src]="slide.slideImg" alt="First slide">
+            <div class="item">
+              <span id="name">{{slide.name}}</span>
+              <span id="price">{{slide.price | currency: '$ '}}</span>
+              <button class="slider-btn" (click)="redirectToItem(slide)">View Product</button>
+            </div>
+          </div>
+        </div>
+        <a href="#carouselExampleIndicators" class="carousel-control-prev" role="button"  data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a href="#carouselExampleIndicators" class="carousel-control-next" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="view-more col-12">
+        <div class="header">Shop The Latest </div>
+        <a class="view-all " [routerLink]="['/shop']">View All</a>
+      </div>
+    </div>
+    <div class="row products-items">
+            <div class=" card col-4 col-lg-3  col-md-3 col-sm-4 col-xs-4" *ngFor="let product of products">
+                <div class="products-item-image">
+                <span class="discount" *ngIf="product.discount > 0 && product.quantity !== 0">-%{{product.discount}}</span>
+                <span class="aditionalText" *ngIf="product.quantity === 0">{{product.aditionalText}}</span>
+                <div class="addItem">
+                  <i class="pi pi-shopping-cart add" (click)="addToCart(product)"></i>
+                  <i class="pi pi-eye add" (click)="singleItem(product)"></i>
+                  <i [class]="!product.Liked ?'pi pi-heart add':'pi pi-heart-fill add'" (click)="addLike(product)"></i>
+                </div>
+                <img class="card-img-top img" src="{{product.imageUrl[0]}}" alt="earrings" >
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title products-item-title">{{product.name}}</h5>
+                  <div class="products-item-info">
+                    <span class="products-item-price"  [ngClass]="{'price':product.discount !== 0 && product.quantity !== 0}"> {{product.price | currency : '$'}}</span>
+                    <span class="newPrice" *ngIf="product.discount && product.quantity !== 0">{{product.newPrice | currency : '$'}}</span>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>

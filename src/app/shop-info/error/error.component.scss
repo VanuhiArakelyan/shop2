@@ -1,0 +1,63 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+@font-face {
+  font-family: mediumFont;
+  src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+@font-face {
+  font-family: boldFont;
+  src: url(../../../assets/font-family/DMSans-Bold.ttf);
+}
+
+
+// .container{
+//   width: 1248px;
+//   display: flex;
+//   justify-content: center;
+//   align-items:center;
+//  // margin-bottom: 100px;
+
+// }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 436px;
+  height: min-content;
+  justify-content:space-between;
+  align-items: center;
+  padding-top: 200px;
+  gap: 20px
+}
+.error{
+  width: 100%;
+  text-align: center;
+  @include heading1;
+  color: $black;
+  font-family: boldFont;
+}
+.errorText{
+  width:100%;
+  text-align: center;
+  @include heading3;
+  color: $darkGray
+}
+.light-button{
+  @include body-large;
+  width: 187px;
+  height: 53px;
+  background-color:$white;
+  color:$black;
+  border: 1px solid $black;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+ }
+.light-button:hover{
+  background-color:$black;
+  color:$white
+}

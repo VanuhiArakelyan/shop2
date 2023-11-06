@@ -1,0 +1,72 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+@font-face {
+  font-family: mediumFont;
+  src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+@font-face {
+  font-family: boldFont;
+  src: url(../../../assets/font-family/DMSans-Bold.ttf);
+}
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reset-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 580px;
+    height: min-content;
+    justify-content:space-between;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .reset-title{
+    width: 100%;
+    @include heading1;
+    color: $black;
+    font-family: boldFont;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .reset-text{
+    width: 90%;
+    @include heading3;
+    color: $black;
+    font-family: boldFont;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .reset-form{
+    display:flex; 
+    flex-direction: column;
+    width: 90%;
+
+  }
+  input {
+    margin-bottom: 20px;
+    outline: none;
+    border:none;
+    border-bottom: 1px solid $gray;
+  }
+  .input-title{ 
+    @include heading5;
+    color: $darkGray;
+  }
+  .dark-btn{
+    width: 90%;
+    height: 53px;
+    background-color:$black;
+    color:$white
+   }
+  .dark-btn:hover{
+     background-color:$white;
+     color:$black;
+     border: 1px solid $gray
+  }

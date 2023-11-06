@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="alert row" role="alert" *ngIf="show === true">
+    <div class="col-12">
+      <span class="pi pi-exclamation-triangle alert-text"></span>
+      <span>No products were found matching your selection.</span>
+    </div>
+      <span class="backHome" routerLink="/home">Back Home</span>
+    </div>
+  <div class="row">
+    <div class="heading">
+      <span class="col-10 heading1">Shop<span class="shortHeader"> The Latest</span></span>
+      <span class="col-2 filter-icon pi pi-sliders-h" (click)="visible = !visible"><span class="filter">Filters</span></span>
+      <!-- form group hidden -->
+    </div>
+  </div>
+  <div class="row shop">
+      <div class="col col-md-3 col-lg-3 sideBar" [formGroup]="fillterForm" *ngIf="!visible" >
+      <div class="search-item">
+        <input type="text" class="search sort" placeholder="search..." formControlName="search">
+        <span class="pi pi-search"></span>
+      </div>
+      <span class="sort-item">
+        <select id="sort" name="Sort By" class="sort" formControlName="sortBy">
+            <option default>Sort By</option>
+            <option *ngFor="let sort of sorts">{{sort}}</option>
+        </select>
+        <div class="slider">
+          <p class="prices">Price:</p>
+          <label for="minPrice">$</label>
+          <input type="number" min="0" max="500" formControlName="priceMin" id="minPrice">
+          <label for="maxPrice">$</label>
+          <input type="number" min="0"  max="500"  formControlName="priceMax" id="maxPrice">
+        </div>  
+        <div class="check-item">
+          <span class="check">On sale</span> 
+          <input type="checkbox" id="switch1" class="checkbox" formControlName="onSale"/>
+            <label for="switch1" class="toggle"></label>
+        </div>
+        <div class="check-item"> 
+          <span class="check">In stock</span>  
+           <input type="checkbox" id="switch2" class="checkbox" formControlName="inStock"/>
+            <label for="switch2" class="toggle"></label>
+        </div> 
+        <button class="btn btn-lg dark-button"(click)="search()">Search</button>
+        </span> 
+    </div>  
+    <div class="product col-xs-12 col-sm-12 col-md-12 col-lg-9">
+      <div class="row products-items">
+        <div class="card col-4 col-lg-3  col-md-3 col-sm-4 col-xs-4" *ngFor="let product of products">
+            <div class="products-item-image">
+            <span class="discount" *ngIf="product.discount > 0 && product.quantity !== 0">-%{{product.discount}}</span>
+            <span class="aditionalText" *ngIf="product.quantity === 0">{{product.aditionalText}}</span>
+            <div class="addItem">
+              <i class="pi pi-shopping-cart add" (click)="addToCart(product)"></i>
+              <i class="pi pi-eye add" (click)="goTo(product)"></i>
+              <i [class]="!product.Liked ?'pi pi-heart add':'pi pi-heart-fill add'" (click)="addLike(product)"></i>
+            </div>
+            <img class="card-img-top img" src="{{product.imageUrl[0]}}" alt="earrings" >
+            </div>
+            <div class="card-body">
+              <h5 class="card-title products-item-title">{{product.name}}</h5>
+              <div class="products-item-info">
+                <span class="products-item-price"  [ngClass]="{'price':product.discount !== 0 && product.quantity !== 0}" >{{product.price | currency : '$'}}</span>
+                <span  class="newPrice" *ngIf="product.discount && product.quantity !== 0">{{product.newPrice | currency : '$'}}</span>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+ </div>
+<!-- </div> -->

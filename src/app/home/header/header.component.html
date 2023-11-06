@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row header" >
+        <div class="logo col-2  col-xs-6 col-sm-2 col-lg-2 ">
+            <img routerLink="/home" src="../../../assets/photos/logo (2).png" alt="logo">
+        </div>
+        <div class="header-info col-10 col-xs-6 col-sm-10 col-lg-10 ">
+            <div class="display links">
+               <div class="title" routerLink="/shop">Shop</div>
+               <div class="title" routerLink="/blog">Blog</div>
+               <div class="title" routerLink="/aboutUs">Our Story</div>
+            </div>
+            <div class="display search">
+                <input type="text" name="search" [(ngModel)]="search" [hidden]="!showInput" placeholder="search">
+                <button class="searchBtn" (click)="searchItem();showInput=!showInput"><span class="pi pi-search"></span></button>
+            </div>
+            <div class="display">
+            <div class="bag">
+                 <span class="pi pi-shopping-cart" (click)="openNav()">
+                    <span class="bagItems" *ngIf="cartList.length !== 0">{{cartList.length}}</span>
+                </span>
+            </div>
+            <div class="menu">
+                <span class="pi" (click)="menu=!menu" [class]="!menu? 'pi-align-right':'pi pi-times'"></span>
+            </div>
+            <div class="liked" routerLink="/myaccount/liked"><span class="pi pi-heart"></span></div>
+            <div class="user" [routerLink]='isLogedIn() === true ? "/myaccount/logout":"/login"'>
+                <span class="userName" *ngIf="isLogedIn() === true">{{user}}</span>
+                <span class="pi" [class]='isLogedIn() === true ? "pi-sign-out":"pi-user"'></span>
+            </div>
+            </div> 
+        </div>
+     <div class="row hiddenSearch">
+            <input type="search" class="col-xs-10 "[(ngModel)]="search" name="search" placeholder="search" >
+            <button class="searchBtn col-xs-2" (click)="searchItem();showInput=!showInput"><span class="pi pi-search "></span></button>
+     </div>   
+    <div class="row header-cart " *ngIf="navBar" >
+        <div class="bascket col-12 " id="mySidenav">
+            <div class="shop-title">
+            <button class="closeBag"  (click)="navBar=!navBar"><i class=" pi pi-angle-left"></i></button>
+            <span class="bag-header">Shopping bag</span>
+            </div>
+            <div class="bag-item" *ngFor="let item of cartList">
+                        <div class="item-image">
+                            <img class="img" src="{{item.imageUrl[0]}}" alt="ring">
+                           </div>
+                           <div class="info">
+                           <div class="item-info">
+                             <span class="item-title">{{item.name}}</span>
+                             <span class="item-price">${{item.newPrice}}</span> 
+                           </div> 
+                           <div class="quantity">
+                               <span>QTY:</span>
+                               <button class="minus" (click)="decriment(item)">-</button>
+                                <span class="number">{{item.num}}</span>
+                               <button class="plus"(click)="increment(item)">+</button>
+                           </div> 
+                           </div>
+                           <div class="delete-item">
+                               <button class="delete" (click)="removeItem(item)"><i class=" pi pi-times"></i></button>
+                           </div>
+                    </div> 
+                    <div class="total">
+                        <span>Subtotal ({{cartList.length}} items)</span>
+                        <span>${{total}}</span>
+                    </div>
+                    <button class="ligth-btn"  routerLink="/card" (click)="navBar=!navBar">VIEW CART</button>
+                    </div>
+        </div>
+        <div class="row navBarMenu" *ngIf="menu">
+         <div class="topics col-12">
+            <div class="topic" routerLink="/home" (click)="menu=!menu">Home</div>
+            <div class="topic" routerLink="/shop" (click)="menu=!menu">Shop</div>
+            <div class="topic" routerLink="/aboutUs" (click)="menu=!menu">About</div>
+            <div class="topic" routerLink="/blog" (click)="menu=!menu">Blog</div>
+            <div class="topic" routerLink="/policy" (click)="menu=!menu">Help</div>
+            <div class="topic" routerLink="/contact_us" (click)="menu=!menu">Contact</div>
+            <div class="topic" routerLink="/myaccount"(click)="menu=!menu">
+                <span class="pi pi-user"></span>
+                <span>My account</span>
+            </div>  
+            <div class="topic" routerLink="myaccount/logout" (click)="menu=!menu">
+                <span class="pi pi-sign-out"></span>
+                <span>Logout</span>
+            </div>
+            </div>
+         </div>
+        </div>
+    </div>         

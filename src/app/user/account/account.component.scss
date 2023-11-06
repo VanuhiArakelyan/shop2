@@ -1,0 +1,275 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+
+@font-face {
+    font-family: myFont;
+    src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+
+.container{
+    width: 100%;
+}
+h1 {
+    @include heading1;
+    font-family: myFont;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.accountNavbar {
+    display:flex;
+    padding-top: 50px;
+    border-bottom: 1px solid grey;
+.navItem{
+    width: 100vw;
+}
+    
+    button {
+        background-color: $white;
+        list-style-type: none;
+        display: inline-block;
+        padding: 30px;
+        color: $darkGray;
+        cursor: pointer;
+        font-family: myFont;
+        border: none;
+        outline: none;
+    }
+
+    .active {
+        border-bottom: 1px solid $black;
+        transition: ease-in-out .3s;
+        color: $black;
+    }
+
+    .icon {
+        display: none;
+    }
+
+    // overflow-x: auto;a
+}
+
+.containText {
+    padding-top: 30px;
+    line-height: 30px;
+
+    .links {
+        cursor: pointer;
+        color: $accent;
+    }
+}
+
+.orderInfo {
+    display: flex;
+    justify-content: space-between;
+    @include heading5;
+    font-family: myFont;
+}
+
+.orders {
+    display: flex;
+    color: $darkGray;
+    justify-content: space-between;
+    border-bottom: 1px solid #D8D8D8;
+    align-items: center;
+    padding: 15px;
+}
+
+.noDownloads {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $accent;
+    background-color: #EFEFEF;
+    padding: 20px;
+
+    .button {
+        color: $accent;
+        font-family: myFont;
+        cursor: pointer;
+    }
+}
+
+.addresHeader {
+    .addAddress {
+        padding-top: 50px;
+
+        .address {
+            @include heading3;
+            font-family: myFont;
+        }
+
+        .add {
+            color: $accent;
+            font-family: myFont;
+            cursor: pointer;
+        }
+    }
+
+    .text {
+        font-family: myFont;
+    }
+}
+
+.addressPage {
+    padding-bottom: 50px;
+}
+
+.addAddressForm {
+
+    input,
+    .form-control {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $darkGray;
+        outline: none;
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    .form-control {
+        color: $darkGray;
+        outline: none;
+    }
+
+    .country {
+        position: relative;
+    }
+
+    .selectControl {
+        border: none;
+        border-bottom: 1px solid $darkGray;
+        padding: 10px;
+        margin-top: 15px;
+        width: 100%;
+        outline: none;
+
+    }
+
+    .labelForCountry {
+        padding-top: 0px;
+        left: 10px;
+        color: $darkGray;
+        position: absolute;
+    }
+
+    .oneline {
+        width: 40%;
+        margin-right: 25px;
+    }
+
+    button {
+        width: 200px;
+        height: 50px;
+        margin-top: 30px;
+        background-color: $black;
+        color: $white;
+        border-radius: 10px;
+        font-family: myFont;
+
+    }
+
+}
+
+.logContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        font-family: myFont;
+
+    }
+
+    button {
+        width: 200px;
+        height: 50px;
+        margin-top: 30px;
+        background-color: $black;
+        color: $white;
+        border-radius: 5px;
+        font-family: myFont;
+
+    }
+}
+
+//liked tab
+.liked-items{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+.liked{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap:20px;
+  width:100%; 
+  height: 152px; 
+  margin-bottom: 20px;
+  border-bottom: 1px solid $gray
+}
+
+.item-image{
+    width: 136px;
+    height: 136px;
+}  
+.img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+.item-info{
+    display: flex;
+    flex-direction: column;
+}
+.item-title{
+    @include heading3;
+    color: $black
+}
+.item-color{
+    @include heading5;
+    color: $darkGray
+}
+.item-price{
+    @include heading5;
+    color: $accent
+}
+.delete{
+    border: none;
+    background-color: $white;
+  }
+
+@media only screen and (max-width: 576px) {
+    .icon {
+        display: flex;
+        opacity: 1;
+    }
+.navItem{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100px;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+
+.info-box {
+    width: 50px;
+    height: 50px
+}
+.orders {
+    flex-direction: column;
+    justify-content: space-between;
+    //padding: 15px;
+}
+.orderInfo {
+    flex-direction: column;
+    justify-content: space-between;
+    @include body-large;
+    font-family: myFont;
+}
+
+}

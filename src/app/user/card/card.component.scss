@@ -1,0 +1,207 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+@font-face {
+  font-family: mediumFont;
+  src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+@font-face {
+  font-family: boldFont;
+  src: url(../../../assets/font-family/DMSans-Bold.ttf);
+}
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+.pi{
+  cursor: pointer;
+ }
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  margin-top: 50px;
+  
+}
+
+.title{
+  width: 100%;
+  @include heading1;
+  color: $black;
+  font-family: boldFont;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cart-items{
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+}
+.cart-item{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap:20px;
+  width:100%; 
+  height: 152px; 
+  margin-bottom: 20px;
+  border-bottom: 1px solid $gray
+}
+.item-image{
+  width: 136px;
+  height: 136px;
+}  
+.img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.item-info{
+  display: flex;
+  flex-direction: column;
+}
+.item-title{
+  @include heading3;
+  color: $black
+}
+.item-color{
+  @include heading5;
+  color: $darkGray
+}
+.item-price{
+  @include heading5;
+  color: $accent
+}
+
+//quantity buttons
+.quantity {
+  margin-left:5px;
+  width: 92px;
+  height: 53px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include heading5;
+  color: $darkGray;
+  text-align: center;
+  background-color: $lightGray;
+  border-radius:5px
+}
+.minus,.plus{
+  height: 100%;
+  color: $darkGray
+ 
+}
+.minus:hover,
+.plus:hover{
+ border: 1px solid $gray;
+ box-shadow: none;
+}
+.delete{
+  border: none;
+  background-color: $white;
+}
+
+//card total
+.cart-total{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end
+}
+.total-title{
+  margin-bottom: 20px;
+  @include heading2;
+  color: $black;
+  font-family: boldFont;
+  border-bottom: 1px solid $gray
+}
+.total{
+  @include body-large;
+  color: $black;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.info-wrapper{
+  display: flex;
+
+}
+.dark-button{
+  width: 100%;
+  height: 53px;
+  background-color:$black;
+  color:$white;
+  border: 2px solid $black;
+  border-radius: 5px;
+ }
+.dark-button:hover{
+   background-color:$white;
+   color:$black
+}
+
+.light-button{
+  width: 100%;
+  height: 53px;
+  background-color: $white;
+  color: $black;
+  border: 2px solid $black;
+  border-radius: 5px;
+  align-self: self-end;
+}
+.light-button:hover{
+  background-color: $black;
+  color: $white
+}
+
+@media screen and (max-width: 768px)and (min-width: 310px){
+  .container{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+ .cart{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ } 
+ .cart-items{
+  width: 90%;
+ }
+ .cart-item{
+  gap:5px
+ }
+ .uptade{
+  width: 90%;
+  margin-bottom: 20px;
+ }
+ .title,.total-title{
+  @include heading3
+ }
+ .item-title{
+  @include body-large
+ }
+ .item-price, .item-color{
+  @include body-medium
+ }
+ .quantity{
+  height: min-content;
+  background-color: $white;
+  color:$black;
+  justify-content: space-between;
+  .minus,.plus {
+    background-color: $white;
+  }
+}
+.info-wrapper{
+  flex-direction: column;
+}
+.item-image{
+  width: 100px;
+  height: 100px;
+} 
+.cart-total{
+  min-width: 292px;
+}
+}

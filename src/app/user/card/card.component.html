@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="title row">
+        <div class="col-12">Shopping Cart</div>
+    </div>
+    <div class="row cart" >
+        <div class=" col-xs-12 col-sm-12 col-lg-12 cart-items">
+           <div class="cart-item" *ngFor="let item of cartList">
+            <div class="item-image">
+             <img class="img" src="{{item.imageUrl[0]}}" alt="ring">
+            </div>
+            <div class="info-wrapper">
+            <div class="item-info">
+              <span class="item-title">{{item.name}}</span>
+              <span class="item-color">{{item.color}}</span>
+              <span class="item-price">{{item.newPrice| currency: "$" }}</span> 
+            </div> 
+            <div class="quantity">
+                <button class="minus btn" (click)="decriment(item)">-</button>
+                <span class="number">{{item.num}}</span>
+                <button class="plus btn"(click)="increment(item)">+</button>
+            </div>
+        </div> 
+            <div class="delete-item">
+                <button class="delete" (click)="removeItem(item)"><i class=" pi pi-times"></i></button>
+            </div>
+            </div>
+            <button class="uptade light-button" (click)="updateCart()">UPDATE CART</button>
+        </div> 
+        </div>
+        <div class="row">
+        <div class="col-12 col-sm-12 col-lg-12 cart-total">
+        <div class="total-title">Cart totals</div>
+        <div class="total">
+            <span>TOTAL</span>
+            <span>{{total | currency : "$"}}</span>
+        </div>
+        <button class="dark-button"  (click)="checkout()">PROCEED TO CHECKOUT</button>
+        </div> 
+    </div>
+</div>

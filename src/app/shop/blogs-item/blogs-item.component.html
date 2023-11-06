@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="midContainer">
+        <h1>Fast Fashion, And Faster Fashion</h1>
+        <p class="author">by <span class="bold">ANNY JOHNSON</span> - October 8,2020</p>
+    </div>
+    <img class="header-img" src="{{selectedItem.image}}" alt="item" >
+    <div class="midContainer">
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat
+            hendrerit, sapien
+            tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu
+            felis. Nunc sed porta augue. <br><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit,
+            sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat
+            sed eu felis.</p> <br><br>
+        <img src="{{selectedItem.image}}" alt="item"> <br><br>
+        <h2 class="bold">Top trends</h2>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat
+            hendrerit, sapien
+            tortor faucibus augue, a maximus elit ex vitae libero.</p>
+        <p class="infoList text">● consectetur adipiscing elit. Aliquam placerat <br>
+            ● Lorem ipsum dolor sit amet consectetur <br>
+            ● sapien tortor faucibus augue <br>
+            ● a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis</p>
+        <div class="parentdiv">
+            <div class="tag">Tags
+            <div class="line"></div> 
+            <span>Fashion, Style, Season</span>
+            </div>
+            <div class="tag share">Share  
+                <div class="line"></div> 
+                <span class="pi pi-facebook"></span>
+                <span class="pi pi-instagram "></span>
+                <span class="pi pi-twitter"></span>
+            </div>
+        </div>
+        <hr>
+        <div [formGroup]="commentForm">
+
+            <div class="bold reply">Leave a reply</div>
+            <p>Your email address will not be published. Required fields are marked *</p>
+            <input type="text" placeholder="Enter your name*" formControlName="name">
+            <input type="text" placeholder="Enter your Email*"  formControlName="email">
+            <input type="text" placeholder="Enter your Website"  formControlName="website">
+            <div>
+                <input type="checkbox" class="checkbox" formControlName="save"><span>Save my name, email, and website in this browser for the next time I comment</span>
+            </div>
+            <div class="comment">
+                <p>Your Comment*</p>
+                <input type="text"  formControlName="comment">
+            </div>
+            <div>
+                <button class="comentButton" (click)="saveComment()" type="submit">Post Comment</button></div>
+        </div>
+
+        <div class="row comments " *ngFor=" let comment of comments">
+            <div class="userImg col-2">
+            <img src="{{comment.image}}" alt="" class="userImg ">
+            </div> 
+            <div class="col-10">
+                <div class="reply" (click)="reply()">
+                    <span class="vector pi pi-reply"></span>
+                    <span>{{comment.reply}}</span>
+                </div>
+                <p class="userName">{{comment.name}}</p>
+                <p>{{comment.time}}</p>
+                <p class="userComment">{{comment.comment}}</p>
+                <div class="replyComment" *ngIf="this.replySub ===true">
+                    <input type="text" placeholder="Your Name">
+                    <input type="text" placeholder="Your Comment">
+                    <button (click)="replyComment()" class="replyButton">Reply</button>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+

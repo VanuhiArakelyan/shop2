@@ -1,0 +1,68 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+@font-face {
+  font-family: mediumFont;
+  src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+@font-face {
+  font-family: boldFont;
+  src: url(../../../assets/font-family/DMSans-Bold.ttf);
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-bottom: 100px;
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 672px;
+}
+.about-title{
+  padding: 50px;
+  justify-content: center;
+  text-align: center;
+  @include heading1;
+  color: $black;
+  font-family:  boldFont;
+}
+.sub-text{
+  justify-content: center;
+  text-align: center;
+  @include heading2;
+  color: $black;
+}
+.about-text{
+  justify-content: left;
+  @include heading5;
+  color: $black;
+}
+.sub-title{
+  width: 100%;
+  text-align:start;
+  @include heading2;
+  color: $black;
+  font-family: boldFont;
+}
+.list{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  padding-left: 50px;
+
+  ul{
+    list-style-type: circle;
+    color: $black;
+    @include heading5
+  }
+}
+
+
+img{
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}

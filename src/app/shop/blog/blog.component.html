@@ -1,0 +1,167 @@
+<div class="container ">
+    <div class="row">
+        <div class="blog col-12">Blog</div>
+    </div>
+    <div class="page row">
+        <div class="col-xs-12 col-md-3  col-lg-3  left-part">
+
+            <div class="blog-page">
+                <div class="search"><input type="text" placeholder="Search" [(ngModel)]="value" class="searchInput">
+                    <span class="searchIcon pi pi-search" (click)="search()"></span>
+                </div>
+            </div>
+            <div class="items-page">
+                <div class="categories" (click)="onTabClick('none')" >Categories</div>
+                <div class="list">
+                    <div (click)="onTabClick('Fashion')" [class.active]="activeTab === 'Fashion'">Fashion</div>
+                    <div (click)="onTabClick('Style')" [class.active]="activeTab === 'Style'">Style</div>
+                    <div (click)="onTabClick('Accessories')" [class.active]="activeTab === 'Accessories'">Accessories</div>
+                    <div (click)="onTabClick('Season')" [class.active]="activeTab === 'Season'">Season</div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="activeTab === 'none'" class="right-part col-9  col-lg-9 col-sm-12  row row-cols-md-2 g-3 " >
+            <div class=" mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" (click)="itemPage(item)" *ngIf="tab ===1">
+                    <img src="{{item.image}}" class="card-img-top" alt="..." width="300px" >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab === 2">Return Back</div>
+            <div class="pagination " >
+                <button *ngIf="tab === 2" (click)="tab = tab -1"><i class="pi pi-angle-left"></i></button>
+                <button [class.active] ="tab === 1" (click)="tab = 1" >1</button>
+                <button [class.active] ="tab === 2" (click)="tab = 2">2</button>
+                <button (click)="tab = tab +1"><i class="pi pi-angle-right"></i></button>
+            </div>
+        </div>
+        <div *ngIf="activeTab === 'Fashion'" class="right-part col-lg-9 col-xs-12  row row-cols-md-2 g-3 " >
+            <div class=" mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" (click)="itemPage(item)"  *ngIf="item.category ==='Fashion'">
+                    <img src="{{item.image}}" class="card-img-top" alt="..." width="300px" >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="activeTab === 'Style'" class="right-part col-lg-9 col-xs-12  row row-cols-md-2 g-3 " >
+            <div class=" mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" (click)="itemPage(item)"  *ngIf="item.category ==='Style'">
+                    <img src="{{item.image}}" class="card-img-top" alt="..." width="300px" >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="activeTab === 'Accessories'" class="right-part col-lg-9 col-xs-12  row row-cols-md-2 g-3 " >
+            <div class=" mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" (click)="itemPage(item)"  *ngIf="item.category ==='Accessories'">
+                    <img src="{{item.image}}" class="card-img-top" alt="..." width="300px" >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="activeTab === 'Season'" class="right-part col-lg-9 col-xs-12  row row-cols-md-2 g-3 " >
+            <div class=" mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" (click)="itemPage(item)"  *ngIf="item.category ==='Season'">
+                    <img src="{{item.image}}" class="card-img-top" alt="..." width="300px" >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container ">
+    <div class="page row">
+        <div class="col-lg-3 col-xs-12 left-part">
+            <div class="blog-page">
+                <h1 class="blog">Blog</h1>
+                <div class="search"><input type="text" placeholder="Search" class="searchInput">
+                    <span class="pi pi-search"></span>
+                </div>
+            </div>
+            <div class="items-page">
+                <div class="categories" >Categories</div>
+                <div class="list">
+                    <div routerLink="/blogsItem">Fashion</div>
+                    <div>Style</div>
+                    <div>Accessories</div>
+                    <div>Season</div>
+                </div>
+            </div>
+        </div>
+        <div class="right-part col-lg-9 col-xs-12  row row-cols-md-2 g-3 " >
+            <div class="carts-wrapper mb-3 " *ngFor="let item of myItems" >
+                <div class="card responsive-grid" style="width: 20rem;" (click)="itemPage()" *ngIf="tab ===1">
+                    <img src="{{item.image}}" class="card-img-top" alt="..."  >
+                    <div class="card-body">
+                        <div class="category">
+                            <span >{{item.category}} -</span>
+                            <span >{{item.date}}</span>
+                        </div>
+                        <h3 class="card-title">{{item.title}}</h3>
+                        <p class="card-text">{{item.info}}</p>
+                        <p class="readMore">Read more</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="tab === 2">hello</div>
+            <div class="pagination">
+                <button *ngIf="tab === 2" (click)="tab = tab -1"><</button>
+                <button [class.active] ="tab === 1" (click)="tab = 1" >1</button>
+                <button [class.active] ="tab === 2" (click)="tab = 2">2</button>
+                <button (click)="tab = tab +1">></button>
+            </div>
+        </div>
+    </div>
+</div> -->

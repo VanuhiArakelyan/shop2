@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="wrapper">
+        <div class="title">Contact <span class="us">Us</span></div>
+        <div class="text">Say Hello send us your thoughts about our products or share your ideas with our Team!</div>
+        <div class="form-list" [formGroup]="contactInfo">
+          <div class="info">
+            <div class="personal-info">
+                <span class="input-wrapper">
+                  <label for="firstName" class="input-title">First name</label>
+                  <input type="text" id="firstName" formControlName="firstName">
+                <span class="error" *ngIf="contactInfo.status !== 'INVALID' && submited">First name must be filled out!</span>
+                </span>
+                <span class="input-wrapper">
+                  <label for="lastName" class="input-title">Last name</label>
+                  <input type="text" id="lastName" formControlName="lastName">
+                <span class="error" *ngIf="contactInfo.status !== 'INVALID' && submited">Last name must be filled out!</span>
+                </span>
+            </div>
+            <div class="contact">
+                <span class="input-wrapper">
+                  <label for="email" class="input-title">Email</label>
+                  <input type="email" id="email"  formControlName="email">
+                  <span class="error" *ngIf="contactInfo.status !== 'INVALID' && submited">You have entered an invalid email</span>
+                </span>
+                <span class="input-wrapper">
+                  <label for="subject" class="input-title">Subject</label>
+                  <select formControlName="subject" class="input-title" id="subject" name="subject">
+                    <option value="Product" *ngFor="let subject of subjects">{{subject}}</option>
+                  </select>
+                  <span class="error" *ngIf="contactInfo.status !== 'INVALID' && submited">Choose the subject</span>
+                </span>
+            </div>
+        </div>   
+       <div class="massege">
+           <label for="massege" class="input-title">Message</label>
+           <input type="text" id="massege" formControlName="massege">
+           <span class="error" *ngIf="contactInfo.status !== 'INVALID' && submited">Message must be filled out!</span>
+        </div>
+        </div>
+        <div>
+        <button class="btn dark-btn" (click)="sendMessage()">SEND</button>
+        </div>
+    </div>
+</div>
+<!-- contactinfo.controls.username !== valid -->
+
+
+
+
+
+
+

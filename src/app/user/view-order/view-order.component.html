@@ -1,0 +1,70 @@
+<div class="container">
+<div class="viewOrderContainer row col-12">
+    <div class="leftPart col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let orders of orders">
+        <div class="row">
+            <h1>Order Details</h1>
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div>
+                    <p>ORDER NUMBER</p>
+                    <p class="contnet">{{orders.orderNumber}}</p>
+                </div>
+                <div>
+                    <p>EMAIL</p>
+                    <p class="contnet">{{orders.email}}</p>
+                </div>
+                <div>
+                    <p>PAYMENT METHOD</p>
+                    <p class="contnet">{{orders.paymentMethod}}</p>
+                </div>
+                <div>
+                    <p>ORDER DATE</p>
+                    <p class="contnet">{{orders.orderDate}}</p>
+                </div>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div>
+                    <p>DELIVERY OPTIONS</p>
+                    <p class="contnet">{{ orders.deliveryOptions}}</p>
+                </div>
+                <div>
+                    <p>DELIVERY ADDRESS</p>
+                    <p class="contnet">{{orders.deliveryAddress}}</p>
+                </div>
+                <div>
+                    <p>CONTACT NUMBER</p>
+                    <p class="contnet">{{orders.contact}}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="rightPart col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <h1>Order Summary</h1>
+        <div class="contain">
+            <div class="prod">
+                <span>PRODUCT</span>
+                <span>TOTAL</span>
+            </div>
+            <div class="prodItem" *ngFor="let item of cartList">
+                <div>
+                    <span>{{item.name}}</span>
+                    <span>{{item.newPrice | currency : '$'}}</span>
+                </div>
+            </div>
+            <div class="sub">
+                <span>SUBTOTAL</span>
+                <span>{{total | currency : '$'}}</span>
+            </div>
+            <div class="ship">
+                <span>Shipping</span>
+                <span>Free Shipping</span>
+            </div>
+            <div class="total">
+                <span>TOTAL</span>
+                <span>{{total | currency : '$'}}</span>
+            </div>
+
+</div>
+</div>
+</div>

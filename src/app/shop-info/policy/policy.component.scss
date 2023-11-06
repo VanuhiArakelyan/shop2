@@ -1,0 +1,47 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+@font-face {
+  font-family: mediumFont;
+  src: url(../../../assets/font-family/DMSans-Medium.ttf);
+}
+@font-face {
+  font-family: boldFont;
+  src: url(../../../assets/font-family/DMSans-Bold.ttf);
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //align-items: flex-start;
+    width: 671px;
+}
+.privacy-title{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include heading1;
+    color: $black;
+    font-family: boldFont;
+}
+.text{
+    @include heading5;
+    color: $black;
+}
+.security{
+    @include heading3;
+    color: $black;
+    font-family: boldFont;
+}
+.cookies{
+    @include heading3;
+    color: $black;
+    font-family: boldFont;
+}

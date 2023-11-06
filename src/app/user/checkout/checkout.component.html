@@ -1,0 +1,95 @@
+<div class="container">
+<div class="checkoutCont">
+    <div class="head">
+
+        <h1>Checkout</h1>
+    </div>
+    <div class="someInfo">
+        <div>
+            <span>Returning Costumer?</span>
+            <span class="button" routerLink="/login">Click here to login</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <h1>Billing Details</h1>
+            <form action=" address" class="addAddressForm" [formGroup]="addAddressForm">
+                <input type="text" placeholder="First Name*" formControlName="firstName" class="oneline">
+                <input type="text" placeholder="Laste Name*" formControlName="lastName" class="oneline">
+                <input type="text" placeholder="Company Name" formControlName="companyName">
+                <!-- <input type="text" placeholder="Country*" formControlName="country">  -->
+                <div class="country">
+
+                    <label for="country" class="labelForCountry">Country*</label>
+                    <select id="country" name="country" class="form-control1 selectControl" formControlName="country"
+                        aria-placeholder="country">
+                        <option value="Select Country*">Select Country*</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Street Address*" formControlName="streetAddress">
+                <input type="text" placeholder="Postcode/ZIP*" formControlName="postcode">
+                <input type="text" placeholder="Town/City*" formControlName="town">
+                <input type="tel" placeholder="Phone*" formControlName="phone">
+                <input type="email" placeholder="Email*" formControlName="email">
+                <div class="check2">
+                    <div class="check1">
+                        <label for="check" class="label">Create an acoount?</label>
+                        <input type="checkbox" id="check" formControlName="check1">
+                    </div>
+                    <div class="check1">
+                        <label for="check2" class="label">Ship to a different address?</label>
+                        <input type="checkbox" id="check2" formControlName="check2">
+                    </div>
+                </div>
+                <input type="text" placeholder="Order notes" formControlName="note">
+            </form>
+        </div>
+        <div class="col-lg-6 col-sm-12 orderDetails">
+            <div>
+                <h1>Your Order</h1>
+                <div class="rightPart">
+                    <div class="contain">
+                        <div class="prod">
+                            <span>PRODUCT</span>
+                            <span>TOTAL</span>
+                        </div>
+                        <div class="prodItem" *ngFor="let item of cartList">
+                            <div>
+                                <span>{{item.name}}</span>
+                                <span>{{item.newPrice | currency : '$'}}</span>
+                            </div>
+                        </div>
+                        <div class="sub">
+                            <span>SUBTOTAL</span>
+                            <span>{{total | currency : '$'}}</span>
+                        </div>
+                        <div class="ship">
+                            <span>Shipping</span>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="total">
+                            <span>TOTAL</span>
+                            <span>{{total | currency : '$'}}</span>
+                        </div>
+
+                        <div class="button1">
+                            <button (click)="order()">PLACE ORDER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

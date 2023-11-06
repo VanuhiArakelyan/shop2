@@ -1,0 +1,125 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/fonts.scss";
+
+@font-face {
+    font-family: boldFont;
+    src: url(../../../assets/font-family/DMSans-Bold.ttf)
+}
+@font-face {
+    font-family: mediumFont;
+    src: url(../../../assets/font-family/DMSans-Medium.ttf)
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+// .container{
+//  // width: 1248px;
+//   display: flex;
+//   flex-direction: column;
+// }
+// .footer-terms {
+//   display: flex;
+//   margin-top: 10px;
+// }
+// .footer-title, .termsOfUse,.privacy-policy{
+//   margin-right: 10px;
+//   @include heading5; 
+//   color: $darkGray; 
+//   font-family: mediumFont;
+//   cursor: pointer;    
+// }
+// .footer-direction{
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+
+// .icons {
+//   display: flex;
+//   margin: 10px;
+// }
+// .pi{
+//   margin: 10px;
+// }
+// .hidden-part{
+//   display:none;
+// }
+
+// @media  screen and (max-width: 576px) {
+//   .hidden-part{
+//     display: flex;
+//     justify-content: space-between;
+//      input{
+//       accent-color: $white;
+//       cursor: pointer
+//     }
+//   }
+// }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $gray;
+  padding-bottom: 50px;
+  padding-top: 10px;
+  margin-top: 100px;
+}
+.footer-direction {
+  display: flex;
+  justify-content: space-between;
+ 
+ 
+}
+.footer-nav, .footer-terms {
+  display: flex;
+  margin-top: 10px;
+}
+.mail{
+  border-bottom: 1px solid gray;
+}
+.footer-title{
+  margin-right: 10px;
+  @include heading5;
+  color: $darkGray;
+  font-family: mediumFont;
+  cursor: pointer;
+}
+.icons {
+  display: flex;
+  margin: 10px;
+}
+
+.in,
+.fb,
+.inst,
+.twit {
+  margin: 10px;
+}
+
+.hidden-part {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .footer-direction {
+      display: flex;
+      flex-direction: column-reverse;
+  }
+  .hidden-part {
+      
+      display: block;
+  }
+  .footer-nav{
+      flex-direction: column;
+  }
+  .conteiner{
+      display: inline;
+  }
+  input[type="checkbox"] {
+    accent-color: $white
+  }
+  
+}
